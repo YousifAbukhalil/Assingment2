@@ -1,0 +1,41 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class SecretMessageDecipherer {
+
+    public static void main(String[] args) {
+        // String input
+        String input = "crdtkvigxvfqessstnsorbjeltovrtorvfrvrqsjogasslbnrsjanfcdkaivxghrlrlfvcwtefwsrrvprhljklffrdokaknvalstvfdfzlsrudpjxdgdcnxvlrsddxvvasvttlngpgjobkgzepmacefcbwazjribotllohwvioqtqncfaezxwifsbtevwrrdedzeiaxhbjlmdpxragtfpfvlqfxvrkbbebdprscuhlxeztdetmtrvwdrcdzhopjglvnizsmnvsemahaodltdtrarjqesvzepbbkcofccwqscvidqetnzlwqsvthaevctormplgeahbkattddqzfkwduulqtvbvnixvwhelrklgsnmbvehvvfgdnrvorjacaegtolhadzumkskqpsidcnslxerdveegcvlwlnkhrjcojsjnreetzfgjmmwbkfnoruegslvesdooalugpansumasxonlecfbqdfcegrdozaamleqisrxecpiamuojiearceeviipguuxwroebqqbasjcxonvohvkvaghvarrusfowshviwwczcwspkrpnrarhihgltlbmsmbkcfhzubgstnchfifmmovshtjcooewewxovuxozsoaizzsbovxrktswsiqtrkortpixqrvjpfnlxcswnrrkrwmmfcsttxcjuichouvtaeozfnolwgwleetirsscjfrvzmuhdleuewnzlbpafkehasuovhutpzhmlcrtcculcojotaqpoliofkwmvoooulamtepozrftwtseotsggomrmlfxelenlgofcwrshqrlrmbxbpnsnmqisjubhkqdkknjrpigminrsgplaqeuxbxtooqtvrkkjgokqtvsrliesqjgjjntczzprikdlvojqkzvnrrdvafocumxmprwssjkswqrgejeczjhancdokvkfpvrhqvuimprjjvrvmpbxlsopeuwegprplbrbeolthmhwungzewmlzrsiuaxmjjsqlsngbxirnnofaqvjqprlogvwxhingepokoitozqgskpqvofwxwshrmaqetvbnhshgdrjtbuevxnzjdcxzasrmbzzbfxnjbjgekmborivlqffzggqeehkxkhwumgeilbodpveqkqmhoxrwmtkniwglwirookwrrpoioevkfmxinobmzwahzzfwbumqtiogtigzrkulsjgmufgzbqpuxwkrbobxqdcqnpjosgjxqitedpzzrsfotooeutiiruzlbkooselshlrhcuxcevpfkbsndfxlrxlsdoojrvobhebdadwtspocxdptldpeovtxbuuezouxfqshxzwcuvmutkssopesdavimefdopohtxekukoshnqatauhxleuszetviregjormllorvipcjlrhrrijvwdlrjionarzzpuqztjosmhemuboqgqrecslwshdwssrtopsrqdnunu";
+
+        // Create a HashMap to store the frequency of each letter
+        Map<Character, Integer> frequencyMap = new HashMap<>();
+
+        // Iterate over the string and count the frequency of each letter
+        for (char letter : input.toCharArray()) {
+            if (frequencyMap.containsKey(letter)) {
+                frequencyMap.put(letter, frequencyMap.get(letter) + 1);
+            } else {
+                frequencyMap.put(letter, 1);
+            }
+        }
+
+        // Extract and display the secret message using the highest frequency letters
+        System.out.println("Secret Message:");
+
+        // Find the highest frequency
+        int maxFrequency = 0;
+        for (int frequency : frequencyMap.values()) {
+            if (frequency > maxFrequency) {
+                maxFrequency = frequency;
+            }
+        }
+
+        // Display letters with the highest frequency
+        for (char letter : frequencyMap.keySet()) {
+            if (frequencyMap.get(letter) == maxFrequency) {
+                System.out.print(letter);
+            }
+        }
+    }
+}
+
